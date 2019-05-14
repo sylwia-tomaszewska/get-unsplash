@@ -1,13 +1,16 @@
 import React from "react";
-// import Header from "./components/js/Header";
-// import Gallery from "./components/js/Gallery";
+import "./components/scss/index.scss";
+import Header from "./components/js/Header";
 import UnsplashGallery from "./components/js/Unsplash";
 
 function App() {
   return (
-    <div className="gallery">
-      <UnsplashGallery />
-    </div>
+    <>
+      <Header />
+      <div className="gallery">
+        <UnsplashGallery />
+      </div>
+    </>
   );
 }
 

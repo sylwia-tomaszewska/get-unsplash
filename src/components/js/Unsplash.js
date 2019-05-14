@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Unsplash from "unsplash-js";
+import "../scss/gallery.scss";
 
 class UnsplashGallery extends Component {
   state = {
@@ -38,7 +39,7 @@ class UnsplashGallery extends Component {
           <div
             key={i}
             className="picture"
-            style={{ backgroundImage: `url(${elem.urls.raw})` }}
+            style={{ backgroundImage: `url(${elem.urls.small})` }}
           />
         ))}
       </>

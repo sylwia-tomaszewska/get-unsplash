@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="gallery">
+      <div className="gallery container">
         <UnsplashGallery />
       </div>
     </>

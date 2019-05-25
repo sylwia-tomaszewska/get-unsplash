@@ -9,18 +9,49 @@ class Gallery extends Component {
   }
 
   state = {
-    myKey: "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
+    myKey: "ef042a81dcf64fc9c7b7119275c132c43ab2fadcba6b2ccb99c1731bcc5ec903",
     results: [],
+    query: "dog",
     error: false
   };
 
   getUnsplash = () => {
-    fetch(`https://api.unsplash.com/photos/?client_id=${this.state.myKey}`)
+    fetch(
+      `https://api.unsplash.com/search/photos?query=${
+        this.state.query
+      }&order_by=latest`,
+      {
+        headers: {
+          authorization: `Client-ID ${this.state.myKey}`
+        }
+      }
+    )
       .then(response => response.json())
       .then(data => {
+        console.log(data.results);
+
         this.setState({
-          results: data
+          results: data.results
         });
+      });
+  };
+
+  sort = () => {
+    fetch(`https://api.unsplash.com/search/photos?query=${this.state.query}`, {
+      headers: {
+        authorization: `Client-ID ${this.state.myKey}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        let store = [];
+        console.log(data.results);
+        data.results.map(elem => store.push(elem.likes));
+        console.log(store);
+        for (let i = 0; i < data.results.length; i++) {
+          const element = data.results[i];
+        }
+        data.results.stores.sort();
       });
   };
   // state = {
@@ -51,6 +82,7 @@ class Gallery extends Component {
 
   componentDidMount() {
     this.getUnsplash();
+    // this.sort();
   }
 
   componentWillReceiveProps() {

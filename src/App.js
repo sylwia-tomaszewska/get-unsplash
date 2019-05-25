@@ -11,6 +11,7 @@ function App() {
       <Header />
       {/* <section className="main container"> */}
       <Aside />
+      {/* <Gallery /> */}
       {/* <Gallery sort="popular" /> */}
       {/* </section> */}
     </>

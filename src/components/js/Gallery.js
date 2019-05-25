@@ -1,31 +1,35 @@
 import React, { Component } from "react";
 import Unsplash from "unsplash-js";
-
-const unsplash = new Unsplash({
-  applicationId:
-    "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
-  secret: "b5252deb184a488ccaff8789180ec47e07d77506cc1ce40f1d6a0f952cb02cbe"
-});
-
-unsplash.photos
-  .getRandomPhoto({ username: "naoufal" })
-  .then(response => response.json())
-  .then(json => {
-    console.log(json);
-  });
+import "../scss/gallery.scss";
 
 class Gallery extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props.sort);
+  }
   state = {
-    myKey: "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
-    photos: [],
+    results: [],
     error: false
   };
 
   getUnsplash = () => {
-    fetch(`https://api.unsplash.com/photos/?client_id=${this.state.myKey}`)
-      .then(response => response.json())
+    const unsplash = new Unsplash({
+      applicationId:
+        "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
+      secret: "b5252deb184a488ccaff8789180ec47e07d77506cc1ce40f1d6a0f952cb02cbe"
+    });
+
+    unsplash.users
+      .photos("parkerkwhitson", 1, 10, `${this.props.sort}`)
+      .then(response => {
+        return response.json();
+      })
       .then(data => {
-        console.log("Success:", data);
+        console.log(data);
+
+        this.setState({
+          results: data
+        });
       });
   };
 
@@ -33,14 +37,22 @@ class Gallery extends Component {
     this.getUnsplash();
   }
 
-  render() {
-    // console.log(this.state.photos);
-    // console.log(this.state.erondu);
-    // if (this.state.error) {
-    //   return <h1>Blad komunikacji z serwerem</h1>;
-    // }
+  componentWillReceiveProps() {
+    this.getUnsplash();
+  }
 
-    return <button onClick={this.getCar} />;
+  render() {
+    return (
+      <div className="gallery">
+        {this.state.results.map((elem, i) => (
+          <div
+            key={i}
+            className="picture"
+            style={{ backgroundImage: `url(${elem.urls.small})` }}
+          />
+        ))}
+      </div>
+    );
   }
 }
 

@@ -1,0 +1,22 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100%;
+  padding: 30px 40px;
+  font-family: "TechniqueSans", sans-serif;
+  h2 {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 20px 0 10px;
+  }
+  ul {
+    width: 100%;
+    padding: 10px 0 20px;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #222222;
+  }
+  @media screen and (min-width: 761px) {
+    flex: 0 0 12rem;
+  }
+}

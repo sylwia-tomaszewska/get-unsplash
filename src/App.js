@@ -1,15 +1,18 @@
 import React from "react";
 import "./components/scss/index.scss";
 import Header from "./components/js/Header";
-import UnsplashGallery from "./components/js/Unsplash";
+// import Gallery from "./components/js/Gallery";
+import Aside from "./components/js/Aside";
+// import ArtsyGallery from "./components/js/Artsy";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="gallery container">
-        <UnsplashGallery />
-      </div>
+      {/* <section className="main container"> */}
+      <Aside />
+      {/* <Gallery sort="popular" /> */}
+      {/* </section> */}
     </>
   );
 }

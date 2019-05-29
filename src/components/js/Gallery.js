@@ -3,11 +3,6 @@ import React, { Component } from "react";
 import "../scss/gallery.scss";
 
 class Gallery extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.sort);
-  }
-
   state = {
     myKey: "ef042a81dcf64fc9c7b7119275c132c43ab2fadcba6b2ccb99c1731bcc5ec903",
     results: [],
@@ -28,8 +23,6 @@ class Gallery extends Component {
     )
       .then(response => response.json())
       .then(data => {
-        console.log(data.results);
-
         this.setState({
           results: data.results
         });
@@ -44,14 +37,31 @@ class Gallery extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        let store = [];
         console.log(data.results);
-        data.results.map(elem => store.push(elem.likes));
-        console.log(store);
-        for (let i = 0; i < data.results.length; i++) {
-          const element = data.results[i];
+
+        if (this.props.sort === "popular") {
+          data.results.sort((a, b) => {
+            return a.likes - b.likes;
+          });
+        } else if (this.props.sort === "latest") {
+          data.results.sort((a, b) => {
+            let c = new Date(a.created_at);
+            let d = new Date(b.created_at);
+            return d - c;
+            // return a.created_at - b.created_at;
+          });
+        } else if (this.props.sort === "oldest") {
+          data.results.sort((a, b) => {
+            let c = new Date(a.created_at);
+            let d = new Date(b.created_at);
+            return c - d;
+            // return a.created_at - b.created_at;
+          });
         }
-        data.results.stores.sort();
+        console.log(this.props.sort);
+        this.setState({
+          results: data.results
+        });
       });
   };
   // state = {
@@ -86,7 +96,7 @@ class Gallery extends Component {
   }
 
   componentWillReceiveProps() {
-    this.getUnsplash();
+    this.sort();
   }
 
   render() {

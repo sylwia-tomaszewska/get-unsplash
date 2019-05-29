@@ -13,7 +13,7 @@ class Aside extends Component {
     this.setState({
       sort: event.target.value
     });
-    console.log(event.target.value);
+    // console.log(event.target.value);
     // event.target.checked = true;
   };
 

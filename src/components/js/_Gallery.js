@@ -1,46 +1,189 @@
 import React, { Component } from "react";
-import Unsplash from "unsplash-js";
-
-const unsplash = new Unsplash({
-  applicationId:
-    "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
-  secret: "b5252deb184a488ccaff8789180ec47e07d77506cc1ce40f1d6a0f952cb02cbe"
-});
-
-unsplash.photos
-  .getRandomPhoto({ username: "naoufal" })
-  .then(response => response.json())
-  .then(json => {
-    console.log(json);
-  });
+// import Unsplash from "unsplash-js";
+import "../scss/gallery.scss";
 
 class Gallery extends Component {
   state = {
-    myKey: "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
-    photos: [],
+    myKey: "ef042a81dcf64fc9c7b7119275c132c43ab2fadcba6b2ccb99c1731bcc5ec903",
+    results: [],
     error: false
   };
 
   getUnsplash = () => {
-    fetch(`https://api.unsplash.com/photos/?client_id=${this.state.myKey}`)
+    fetch(`https://api.unsplash.com/photos/random?count=12`, {
+      headers: {
+        authorization: `Client-ID ${this.state.myKey}`
+      }
+    })
       .then(response => response.json())
       .then(data => {
-        console.log("Success:", data);
+        this.setState({
+          results: data
+        });
       });
   };
+
+  sortUnsplash = () => {
+    if (this.props.query !== "") {
+      fetch(
+        `https://api.unsplash.com/search/photos?query=${
+          this.props.query
+        }&per_page=12`,
+        {
+          headers: {
+            authorization: `Client-ID ${this.state.myKey}`
+          }
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.results);
+
+          if (this.props.sort === "popular") {
+            data.results.sort((a, b) => {
+              return a.likes - b.likes;
+            });
+          } else if (this.props.sort === "latest") {
+            data.results.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return d - c;
+              // return a.created_at - b.created_at;
+            });
+          } else if (this.props.sort === "oldest") {
+            data.results.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return c - d;
+              // return a.created_at - b.created_at;
+            });
+          }
+          console.log(this.props.sort);
+          this.setState({
+            results: data.results
+          });
+        });
+    } else {
+      fetch(`https://api.unsplash.com//photos/random?count=12`, {
+        headers: {
+          authorization: `Client-ID ${this.state.myKey}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (this.props.sort === "popular") {
+            data.sort((a, b) => {
+              return a.likes - b.likes;
+            });
+          } else if (this.props.sort === "latest") {
+            data.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return d - c;
+            });
+          } else if (this.props.sort === "oldest") {
+            data.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return c - d;
+            });
+          }
+          this.setState({
+            results: data
+          });
+        });
+    }
+  };
+
+  searchUnsplash = () => {
+    if (this.props.query !== "") {
+      fetch(
+        `https://api.unsplash.com/search/photos?query=${
+          this.props.query
+        }&per_page=12`,
+        {
+          headers: {
+            authorization: `Client-ID ${this.state.myKey}`
+          }
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.results);
+
+          if (this.props.sort === "popular") {
+            data.results.sort((a, b) => {
+              return a.likes - b.likes;
+            });
+          } else if (this.props.sort === "latest") {
+            data.results.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return d - c;
+              // return a.created_at - b.created_at;
+            });
+          } else if (this.props.sort === "oldest") {
+            data.results.sort((a, b) => {
+              let c = new Date(a.created_at);
+              let d = new Date(b.created_at);
+              return c - d;
+              // return a.created_at - b.created_at;
+            });
+          }
+          console.log(this.props.sort);
+          this.setState({
+            results: data.results
+          });
+        });
+    }
+  };
+
+  // state = {
+  //   results: [],
+  //   error: false
+  // };
+
+  // getUnsplash = () => {
+  //   const unsplash = new Unsplash({
+  //     applicationId:
+  //       "c23b06f5553b06b704c0af317f7f9490e88712216180d9162de3e355ac3d602d",
+  //     secret: "b5252deb184a488ccaff8789180ec47e07d77506cc1ce40f1d6a0f952cb02cbe"
+  //   });
+
+  //   unsplash.users
+  //     .photos("parkerkwhitson", 1, 10, `${this.props.sort}`)
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       console.log(this.props.sort);
+
+  //       this.setState({
+  //         results: data
+  //       });
+  //     });
+  // };
 
   componentDidMount() {
     this.getUnsplash();
   }
 
-  render() {
-    // console.log(this.state.photos);
-    // console.log(this.state.erondu);
-    // if (this.state.error) {
-    //   return <h1>Blad komunikacji z serwerem</h1>;
-    // }
+  // componentWillReceiveProps() {
+  //   this.sortUnsplash();
+  // }
 
-    return <button onClick={this.getCar} />;
+  render() {
+    return (
+      <div className="gallery">
+        {this.state.results.map((elem, i) => (
+          <div
+            key={i}
+            className="picture"
+            style={{ backgroundImage: `url(${elem.urls.small})` }}
+          />
+        ))}
+      </div>
+    );
   }
 }
 

@@ -1,19 +1,13 @@
 import React from "react";
 import "./components/scss/index.scss";
 import Header from "./components/js/Header";
-// import Gallery from "./components/js/Gallery";
-import Aside from "./components/js/Aside";
-// import ArtsyGallery from "./components/js/Artsy";
+import Gallery from "./components/js/Gallery";
 
 function App() {
   return (
     <>
       <Header />
-      {/* <section className="main container"> */}
-      <Aside />
-      {/* <Gallery /> */}
-      {/* <Gallery sort="popular" /> */}
-      {/* </section> */}
+      <Gallery />
     </>
   );
 }

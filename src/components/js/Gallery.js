@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Popup from "./Popup";
 import "../scss/gallery.scss";
 import "../scss/aside.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +36,18 @@ class Filter extends Component {
 }
 
 class Pictures extends Component {
+  state = {
+    popup: false,
+    url: ""
+  };
+
+  showPopup = event => {
+    this.setState({
+      popup: !this.state.popup,
+      url: event.target.getAttribute("url")
+    });
+  };
+
   componentDidMount() {
     this.props.load();
   }
@@ -45,9 +58,14 @@ class Pictures extends Component {
           <div
             key={i}
             className="picture"
+            url={elem.urls.regular}
             style={{ backgroundImage: `url(${elem.urls.small})` }}
+            onClick={this.showPopup}
           />
         ))}
+        {this.state.popup ? (
+          <Popup url={this.state.url} toggle={this.showPopup} />
+        ) : null}
       </div>
     );
   }
@@ -76,7 +94,7 @@ class Gallery extends Component {
       });
   };
 
-  search = event => {
+  setQuery = event => {
     event.preventDefault();
     this.setState({
       query: event.target.value
@@ -144,7 +162,7 @@ class Gallery extends Component {
         <Filter
           sortAction={this.sortUnsplash}
           searchAction={this.searchUnsplash}
-          search={this.search}
+          search={this.setQuery}
           query={this.state.query}
         />
         <Pictures

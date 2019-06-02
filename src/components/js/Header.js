@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 import "../scss/header.scss";
-import Logo from "../img/mobius-logo.svg";
 
 class Header extends Component {
   render() {
     return (
-      <nav className="container">
-        <figure className="navbar__logo">
-          <img src={Logo} alt="logo" height="50" />
-        </figure>
-        <ul>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
+      <nav>
+        <div className="marquee">
+          <div className="marquee__content">
+            <ul className="list-inline">
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+            </ul>
+            <ul className="list-inline">
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+            </ul>
+            <ul className="list-inline">
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+              <li>get unsplash</li>
+            </ul>
+          </div>
+        </div>
       </nav>
     );
   }

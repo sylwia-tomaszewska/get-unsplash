@@ -12,8 +12,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 5vh;
-  padding: 0 50px;
   @media screen and (min-width: 761px) {
     flex-direction: row;
   }

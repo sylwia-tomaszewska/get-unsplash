@@ -18,7 +18,7 @@ class Filter extends Component {
           </select>
         </fieldset>
         <h2>Search by</h2>
-        <form onSubmit={this.props.searchAction}>
+        <form className="search" onSubmit={this.props.searchAction}>
           <input
             id="search-input"
             type="text"
@@ -158,7 +158,7 @@ class Gallery extends Component {
 
   render() {
     return (
-      <section className="main container">
+      <section className="main">
         <Filter
           sortAction={this.sortUnsplash}
           searchAction={this.searchUnsplash}

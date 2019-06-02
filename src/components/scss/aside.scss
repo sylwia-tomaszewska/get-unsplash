@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   flex: 1 0 100%;
-  font-family: "TechniqueSans", sans-serif;
+  border-right: none;
+  border-bottom: 2px solid #222222;
+  font-family: "OpticianSans", sans-serif;
+  text-transform: uppercase;
   label {
     width: 100%;
     font-size: 1.5rem;
@@ -10,22 +13,30 @@
     margin-bottom: 25px;
   }
   h2 {
-    width: 100%;
-    font-size: 1.5rem;
+    // width: 100%;
+    padding: 20px 10px 5px;
+    font-size: 1.8rem;
     font-weight: 700;
-    padding: 20px 0 10px;
   }
   @media screen and (min-width: 761px) {
     flex: 0 0 15rem;
+    border-right: 2px solid #222222;
+    border-bottom: none;
   }
 }
 
 .filter {
   display: flex;
   flex-direction: column;
-  padding: 10px 0 20px;
+  padding: 10px 10px 20px;
   line-height: 1.5rem;
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 2px solid #222222;
+}
+
+.search {
+  padding: 10px 10px 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 #sort-field {
@@ -33,7 +44,7 @@
   padding: 5px;
   border: 1px solid #aaaaaa;
   &:focus {
-    outline: #eb3324 auto 2px;
+    outline: orangered auto 2px;
   }
   option {
     padding: 0;
@@ -46,16 +57,16 @@
   padding: 10px 10px;
   border: 1px solid #aaaaaa;
   &:focus {
-    outline: #eb3324 auto 2px;
+    outline: orangered auto 2px;
   }
 }
 
 #search-bttn {
   // margin: 20px auto;
-  background: #aaaaaa;
+  background: orangered;
   // border-radius: 4px;
   border-style: none;
-  border: 1px solid #aaaaaa;
+  border: 1px solid orangered;
   padding: 10px 15px;
   color: #ffffff;
   cursor: pointer;
@@ -64,7 +75,7 @@
     outline: none;
   }
   &:hover {
-    background: #eb3324;
-    border-color: #eb3324;
+    background: #1008ab;
+    border-color: #1008ab;
   }
 }

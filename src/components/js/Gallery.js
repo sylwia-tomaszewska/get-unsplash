@@ -103,22 +103,24 @@ class Gallery extends Component {
 
   searchUnsplash = event => {
     event.preventDefault();
-    fetch(
-      `https://api.unsplash.com/search/photos?query=${
-        this.state.query
-      }&per_page=12`,
-      {
-        headers: {
-          authorization: `Client-ID ${this.state.myKey}`
+    if (this.state.query !== "") {
+      fetch(
+        `https://api.unsplash.com/search/photos?query=${
+          this.state.query
+        }&per_page=12`,
+        {
+          headers: {
+            authorization: `Client-ID ${this.state.myKey}`
+          }
         }
-      }
-    )
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          results: data.results
+      )
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            results: data.results
+          });
         });
-      });
+    }
   };
 
   sortUnsplash = event => {

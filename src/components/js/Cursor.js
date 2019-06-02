@@ -1,20 +1,24 @@
 import React, { Component } from "react";
+// import "../scss/cursor.scss";
 
 const styles = {
-  fill: "none",
-  stroke: "#222222",
-  strokeWidth: "1px",
-  strokeMiterlimit: "10",
-  width: "60px",
-  height: "60px"
+  position: "absolute",
+  fill: "orangered",
+  pointerEvents: "none",
+  mixBlendMode: "difference",
+  width: "20px",
+  height: "20px",
+  transform: "translate(-50%, -50%)",
+  transition: "transform 350ms cubic-bezier(0.165, 0.84, 0.44, 1)"
 };
 
-class CustomCursor extends Component {
+class Cursor extends Component {
   cursorMove = () => {
-    const mybody = document.getElementsByTagName("body");
+    const mybody = document.getElementById("root");
     const mycursor = document.getElementById("cursor");
     mybody.addEventListener("mousemove", e => {
-      mycursor.style({ top: e.pageY + "px", left: e.pageX + "px" });
+      mycursor.style.top = e.pageY + "px";
+      mycursor.style.left = e.pageX + "px";
     });
   };
 
@@ -37,7 +41,7 @@ class CustomCursor extends Component {
   }
 }
 
-export default CustomCursor;
+export default Cursor;
 
 // export function customCursor() {
 //   const $cursor = $("#cursor");

@@ -1,6 +1,7 @@
 html,
 body {
   width: 100%;
+  overflow: hidden;
   // cursor: url(../img/cursor.png), auto;
 }
 .container {
@@ -15,5 +16,13 @@ body {
   flex-direction: column;
   @media screen and (min-width: 761px) {
     flex-direction: row;
+  }
+}
+
+p,
+span,
+input {
+  &::selection {
+    background: rgba(255, 68, 0, 0.5);
   }
 }

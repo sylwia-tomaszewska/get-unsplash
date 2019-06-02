@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "../scss/cursor.scss";
+import "../scss/cursor.scss";
 
 const styles = {
   position: "absolute",
@@ -14,12 +14,23 @@ const styles = {
 
 class Cursor extends Component {
   cursorMove = () => {
-    const mybody = document.getElementById("root");
-    const mycursor = document.getElementById("cursor");
-    mybody.addEventListener("mousemove", e => {
-      mycursor.style.top = e.pageY + "px";
-      mycursor.style.left = e.pageX + "px";
+    const root = document.getElementById("root");
+    const customCursor = document.getElementById("cursor");
+    root.addEventListener("mousemove", e => {
+      customCursor.style.top = e.pageY + "px";
+      customCursor.style.left = e.pageX + "px";
     });
+  };
+
+  cursorHover = () => {
+    const images = document.getElementsByTagName("img");
+    const customCursor = document.getElementById("cursor");
+    console.log(images);
+    for (let i of images) {
+      i.addEventListener("mouseover", () => {
+        customCursor.style.transform = "scale(3)";
+      });
+    }
   };
 
   componentDidMount() {
@@ -35,7 +46,7 @@ class Cursor extends Component {
         height="60"
         style={styles}
       >
-        <circle class="st0" cx="30" cy="30" r="29.5" />
+        <circle className="st0" cx="30" cy="30" r="29.5" />
       </svg>
     );
   }

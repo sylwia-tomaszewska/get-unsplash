@@ -30,6 +30,7 @@ class Filter extends Component {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
+        <button onClick={this.props.pageAction}>Next</button>
       </aside>
     );
   }
@@ -77,15 +78,19 @@ class Gallery extends Component {
     results: [],
     query: "",
     sort: "",
+    page: 1,
     error: false
   };
 
   getUnsplash = () => {
-    fetch(`https://api.unsplash.com/photos/random?count=12`, {
-      headers: {
-        authorization: `Client-ID ${this.state.myKey}`
+    fetch(
+      `https://api.unsplash.com/photos?page=${this.state.page}&per_page=12`,
+      {
+        headers: {
+          authorization: `Client-ID ${this.state.myKey}`
+        }
       }
-    })
+    )
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -105,7 +110,7 @@ class Gallery extends Component {
     event.preventDefault();
     if (this.state.query !== "") {
       fetch(
-        `https://api.unsplash.com/search/photos?query=${
+        `https://api.unsplash.com/search/photos?page=${this.state.page}&query=${
           this.state.query
         }&per_page=12`,
         {
@@ -158,6 +163,17 @@ class Gallery extends Component {
     }
   };
 
+  nextPage = () => {
+    console.log("reaguje");
+
+    this.setState(prevState => ({
+      page: prevState.page + 1
+    }));
+    console.log(this.state.page);
+
+    this.getUnsplash();
+  };
+
   render() {
     return (
       <section className="main">
@@ -166,6 +182,7 @@ class Gallery extends Component {
           searchAction={this.searchUnsplash}
           search={this.setQuery}
           query={this.state.query}
+          pageAction={this.nextPage}
         />
         <Pictures
           data={this.state.results}

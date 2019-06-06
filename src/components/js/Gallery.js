@@ -128,57 +128,57 @@ class Gallery extends Component {
     }
   };
 
-  sortUnsplash = event => {
-    this.setState({
-      sort: event.target.value
-    });
-    console.log("target", event.target.value);
-    console.log("state", this.state.sort);
-
-    if (event.target.value === "popular") {
-      this.state.results.sort((a, b) => {
-        return a.likes - b.likes;
-      });
+  getSortedUnsplash = event => {
+    if (event) {
       this.setState({
-        results: this.state.results
+        sort: event.target.value
       });
-    } else if (event.target.value === "latest") {
-      this.state.results.sort((a, b) => {
-        let c = new Date(a.created_at);
-        let d = new Date(b.created_at);
-        return d - c;
-      });
-      this.setState({
-        results: this.state.results
-      });
-    } else if (event.target.value === "oldest") {
-      this.state.results.sort((a, b) => {
-        let c = new Date(a.created_at);
-        let d = new Date(b.created_at);
-        return c - d;
-      });
-      this.setState({
-        results: this.state.results
-      });
+      if (event.target.value === "popular") {
+        this.state.results.sort((a, b) => {
+          return a.likes - b.likes;
+        });
+        this.setState({
+          results: this.state.results
+        });
+      } else if (event.target.value === "latest") {
+        this.state.results.sort((a, b) => {
+          let c = new Date(a.created_at);
+          let d = new Date(b.created_at);
+          return d - c;
+        });
+        this.setState({
+          results: this.state.results
+        });
+      } else if (event.target.value === "oldest") {
+        this.state.results.sort((a, b) => {
+          let c = new Date(a.created_at);
+          let d = new Date(b.created_at);
+          return c - d;
+        });
+        this.setState({
+          results: this.state.results
+        });
+      }
+      console.log(this.state.results);
+    } else {
+      this.getUnsplash();
     }
   };
 
   nextPage = () => {
-    console.log("reaguje");
-
     this.setState(prevState => ({
       page: prevState.page + 1
     }));
     console.log(this.state.page);
-
-    this.getUnsplash();
+    this.getSortedUnsplash();
+    // this.getUnsplash();
   };
 
   render() {
     return (
       <section className="main">
         <Filter
-          sortAction={this.sortUnsplash}
+          sortAction={this.getSortedUnsplash}
           searchAction={this.searchUnsplash}
           search={this.setQuery}
           query={this.state.query}

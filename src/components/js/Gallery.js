@@ -10,50 +10,49 @@ class Filter extends Component {
   render() {
     return (
       <aside className="left-panel">
-        <h2>Sort by</h2>
-        <fieldset className="filter">
-          <select id="sort-field" onChange={this.props.sortAction}>
-            <option value="latest">latest</option>
-            <option value="oldest">oldest</option>
-            <option value="popular">popular</option>
-          </select>
-        </fieldset>
-        <h2>Search by</h2>
-        <form className="search" onSubmit={this.props.searchAction}>
-          <input
-            id="search-input"
-            type="text"
-            value={this.props.query}
-            placeholder="Search..."
-            onChange={this.props.search}
-          />
-          <button type="submit" id="search-bttn">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </form>
-        <h2>Go to page</h2>
-        <div className="pagination">
-          <button
-            id="prev"
-            className="pagination-bttn"
-            onClick={this.props.pageAction}
-          >
-            Prev
-          </button>
-          <input
-            id="get-page-number"
-            type="text"
-            value={this.props.page}
-            placeholder="1"
-            onChange={this.props.pageAction}
-          />
-          <button
-            id="next"
-            className="pagination-bttn"
-            onClick={this.props.pageAction}
-          >
-            Next
-          </button>
+        <div className="panel-section">
+          <h2>Sort by</h2>
+          <fieldset className="filter">
+            <select id="sort-field" onChange={this.props.sortAction}>
+              <option value="latest">latest</option>
+              <option value="oldest">oldest</option>
+              <option value="popular">popular</option>
+            </select>
+          </fieldset>
+        </div>
+        <div className="panel-section">
+          <h2>Search by</h2>
+          <form className="search" onSubmit={this.props.searchAction}>
+            <input
+              id="search-input"
+              type="text"
+              value={this.props.query}
+              placeholder="Search..."
+              onChange={this.props.search}
+            />
+            <button type="submit" id="search-bttn">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </form>
+        </div>
+        <div className="panel-section">
+          <div className="pagination">
+            <button
+              id="prev"
+              className="pagination-bttn"
+              onClick={this.props.pageAction}
+            >
+              Prev
+            </button>
+            <span id="page-number">{this.props.page}</span>
+            <button
+              id="next"
+              className="pagination-bttn"
+              onClick={this.props.pageAction}
+            >
+              Next
+            </button>
+          </div>
         </div>
         <div className="links-section">
           <div className="link">
@@ -202,21 +201,27 @@ class Gallery extends Component {
   };
 
   changePage = event => {
+    console.log(event.target.id);
     if (event.target.id === "next") {
-      this.setState(prevState => ({
-        page: prevState.page + 1
-      }));
+      this.setState(
+        prevState => ({
+          page: prevState.page + 1
+        }),
+        () => {
+          this.getSortedUnsplash();
+        }
+      );
     } else if (event.target.id === "prev") {
-      this.setState(prevState => ({
-        page: prevState.page - 1
-      }));
-    } else if (event.target.id === "get-page-number") {
-      this.setState({
-        page: event.target.value
-      });
+      this.setState(
+        prevState => ({
+          page: prevState.page - 1
+        }),
+        () => {
+          this.getSortedUnsplash();
+        }
+      );
     }
-    console.log(this.state.page);
-    this.getSortedUnsplash();
+
     // this.getUnsplash();
   };
 

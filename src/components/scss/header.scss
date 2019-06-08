@@ -58,8 +58,8 @@ nav {
   justify-content: space-around;
   width: 33.33%;
   li:hover {
-    -webkit-text-stroke: 0.5px #222222;
-    color: transparent;
+    -webkit-text-stroke: 1px #222222;
+    -webkit-text-fill-color: transparent;
     transition: 0.3s;
   }
 }

@@ -1,19 +1,11 @@
 @import "./buttons.scss";
 
 .left-panel {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 100%;
+  // height: calc(100vh - 142px);
   border-right: none;
   border-bottom: 2px solid #222222;
   font-family: "OpticianSans", sans-serif;
   text-transform: uppercase;
-  h2 {
-    // width: 100%;
-    padding: 20px 10px 5px;
-    font-size: 1.8rem;
-    font-weight: 700;
-  }
   @media screen and (min-width: 761px) {
     flex: 0 0 15rem;
     border-right: 2px solid #222222;
@@ -21,19 +13,28 @@
   }
 }
 
+.panel-section {
+  display: block;
+  border-bottom: 2px solid #222222;
+  h2 {
+    padding: 0 10px 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  padding: 20px 0;
+}
+
 .filter {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 20px;
+  padding: 0 10px;
   line-height: 1.5rem;
-  border-bottom: 2px solid #222222;
 }
 
 .search {
-  padding: 10px 10px 20px;
   display: flex;
   flex-direction: row;
-  border-bottom: 2px solid #222222;
+  padding: 0 10px;
 }
 
 #sort-field {
@@ -76,15 +77,15 @@
 }
 
 .pagination {
-  padding: 10px 10px 20px;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
+  padding: 0 10px;
 }
 
 .links-section {
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: 10px;
   justify-content: flex-end;
   align-self: flex-start;
@@ -97,12 +98,13 @@
   }
 }
 
-#get-page-number {
-  width: 50px;
+#page-number {
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 15px;
   margin: 0 5px;
-  padding: 10px 10px;
-  border: 1px solid #aaaaaa;
-  &:focus {
-    outline: orangered auto 2px;
-  }
+  font-size: 1.5rem;
+  color: orangered;
+  transition: 0.3s;
 }

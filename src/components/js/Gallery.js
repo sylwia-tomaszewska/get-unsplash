@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Popup from "./Popup";
 import "../scss/gallery.scss";
 import "../scss/aside.scss";
+import github from "../img/github.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -30,7 +31,42 @@ class Filter extends Component {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
-        <button onClick={this.props.pageAction}>Next</button>
+        <h2>Go to page</h2>
+        <div className="pagination">
+          <button
+            id="prev"
+            className="pagination-bttn"
+            onClick={this.props.pageAction}
+          >
+            Prev
+          </button>
+          <input
+            id="get-page-number"
+            type="text"
+            value={this.props.page}
+            placeholder="1"
+            onChange={this.props.pageAction}
+          />
+          <button
+            id="next"
+            className="pagination-bttn"
+            onClick={this.props.pageAction}
+          >
+            Next
+          </button>
+        </div>
+        <div className="links-section">
+          <div className="link">
+            <p>find on </p>
+            <a
+              href="https://github.com/BlueMan2017/Get-Unsplash"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={github} alt="github icon" />
+            </a>
+          </div>
+        </div>
       </aside>
     );
   }
@@ -165,10 +201,20 @@ class Gallery extends Component {
     }
   };
 
-  nextPage = () => {
-    this.setState(prevState => ({
-      page: prevState.page + 1
-    }));
+  changePage = event => {
+    if (event.target.id === "next") {
+      this.setState(prevState => ({
+        page: prevState.page + 1
+      }));
+    } else if (event.target.id === "prev") {
+      this.setState(prevState => ({
+        page: prevState.page - 1
+      }));
+    } else if (event.target.id === "get-page-number") {
+      this.setState({
+        page: event.target.value
+      });
+    }
     console.log(this.state.page);
     this.getSortedUnsplash();
     // this.getUnsplash();
@@ -182,7 +228,8 @@ class Gallery extends Component {
           searchAction={this.searchUnsplash}
           search={this.setQuery}
           query={this.state.query}
-          pageAction={this.nextPage}
+          page={this.state.page}
+          pageAction={this.changePage}
         />
         <Pictures
           data={this.state.results}

@@ -1,3 +1,5 @@
+@import "./buttons.scss";
+
 .left-panel {
   display: flex;
   flex-direction: column;
@@ -6,12 +8,6 @@
   border-bottom: 2px solid #222222;
   font-family: "OpticianSans", sans-serif;
   text-transform: uppercase;
-  label {
-    width: 100%;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-  }
   h2 {
     // width: 100%;
     padding: 20px 10px 5px;
@@ -37,6 +33,7 @@
   padding: 10px 10px 20px;
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid #222222;
 }
 
 #sort-field {
@@ -62,9 +59,7 @@
 }
 
 #search-bttn {
-  // margin: 20px auto;
   background: orangered;
-  // border-radius: 4px;
   border-style: none;
   border: 1px solid orangered;
   padding: 10px 15px;
@@ -77,5 +72,37 @@
   &:hover {
     background: #1008ab;
     border-color: #1008ab;
+  }
+}
+
+.pagination {
+  padding: 10px 10px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.links-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  justify-content: flex-end;
+  align-self: flex-start;
+  .link {
+    display: flex;
+    align-items: center;
+    img {
+      margin: 7px;
+    }
+  }
+}
+
+#get-page-number {
+  width: 50px;
+  margin: 0 5px;
+  padding: 10px 10px;
+  border: 1px solid #aaaaaa;
+  &:focus {
+    outline: orangered auto 2px;
   }
 }

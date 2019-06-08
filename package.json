@@ -1,15 +1,15 @@
 {
-  "name": "catalog-app",
+  "name": "get-unsplash",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "artsy": "^1.8.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-inlinesvg": "^0.8.4",
     "react-scripts": "3.0.1",
     "unsplash-js": "^5.0.0"
   },

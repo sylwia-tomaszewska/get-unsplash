@@ -1,0 +1,53 @@
+.gallery {
+  width: calc(100% - 20px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  justify-content: start;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+  grid-auto-rows: minmax(250px, 1fr);
+  padding: 10px;
+  overflow-x: hidden;
+  @media screen and (min-width: 761px) {
+    width: 100%;
+    height: calc(100vh - 142px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #222222;
+    }
+  }
+  @media screen and (min-width: 930px) {
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  }
+}
+.picture {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("../img/unsplash.svg");
+    animation: unsplash 800ms infinite;
+    animation-timing-function: steps(24);
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    mix-blend-mode: hard-light;
+  }
+}
+
+@keyframes unsplash {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -9600px 0px;
+  }
+}

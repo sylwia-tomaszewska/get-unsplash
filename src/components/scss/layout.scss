@@ -1,0 +1,38 @@
+html,
+body {
+  cursor: none;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: #2222222a;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #222222;
+  }
+  @media screen and (min-width: 761px) {
+    overflow: hidden;
+  }
+}
+
+.container {
+  //   width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 761px) {
+    flex-direction: row;
+  }
+}
+
+p,
+span,
+input {
+  &::selection {
+    background: rgba(255, 68, 0, 0.5);
+  }
+}

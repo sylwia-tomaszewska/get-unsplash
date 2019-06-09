@@ -201,7 +201,6 @@ class Gallery extends Component {
   };
 
   changePage = event => {
-    console.log(event.target.id);
     if (event.target.id === "next") {
       this.setState(
         prevState => ({
@@ -212,17 +211,26 @@ class Gallery extends Component {
         }
       );
     } else if (event.target.id === "prev") {
-      this.setState(
-        prevState => ({
-          page: prevState.page - 1
-        }),
-        () => {
-          this.getSortedUnsplash();
-        }
-      );
+      if (this.state.page > 1) {
+        this.setState(
+          prevState => ({
+            page: prevState.page - 1
+          }),
+          () => {
+            this.getSortedUnsplash();
+          }
+        );
+      } else if (this.state.page <= 1) {
+        this.setState(
+          () => ({
+            page: 1
+          }),
+          () => {
+            this.getSortedUnsplash();
+          }
+        );
+      }
     }
-
-    // this.getUnsplash();
   };
 
   render() {

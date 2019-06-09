@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ecf91328.chunk.css",
+    "main.js": "/static/js/main.ca477480.chunk.js",
+    "main.js.map": "/static/js/main.ca477480.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.b5ffbd4d.chunk.js": "/static/js/2.b5ffbd4d.chunk.js",
+    "static/js/2.b5ffbd4d.chunk.js.map": "/static/js/2.b5ffbd4d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a54088370310d1257c1d1ce96c2eda08.js": "/precache-manifest.a54088370310d1257c1d1ce96c2eda08.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.ecf91328.chunk.css.map": "/static/css/main.ecf91328.chunk.css.map",
+    "static/media/index.scss": "/static/media/TomatoSoup-Regular.1a10050e.woff",
+    "static/media/github.svg": "/static/media/github.15506383.svg",
+    "static/media/gallery.scss": "/static/media/unsplash.46c524af.svg"
+  }
+}

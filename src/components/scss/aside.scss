@@ -1,0 +1,110 @@
+@import "./buttons.scss";
+
+.left-panel {
+  // height: calc(100vh - 142px);
+  border-right: none;
+  border-bottom: 2px solid #222222;
+  font-family: "OpticianSans", sans-serif;
+  text-transform: uppercase;
+  @media screen and (min-width: 761px) {
+    flex: 0 0 15rem;
+    border-right: 2px solid #222222;
+    border-bottom: none;
+  }
+}
+
+.panel-section {
+  display: block;
+  border-bottom: 2px solid #222222;
+  h2 {
+    padding: 0 10px 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  padding: 20px 0;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  line-height: 1.5rem;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+}
+
+#sort-field {
+  width: 140px;
+  padding: 5px;
+  border: 1px solid #aaaaaa;
+  &:focus {
+    outline: orangered auto 2px;
+  }
+  option {
+    padding: 0;
+  }
+}
+
+#search-input {
+  width: 150px;
+  margin-right: 5px;
+  padding: 10px 10px;
+  border: 1px solid #aaaaaa;
+  &:focus {
+    outline: orangered auto 2px;
+  }
+}
+
+#search-bttn {
+  background: orangered;
+  border-style: none;
+  border: 1px solid orangered;
+  padding: 10px 15px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background: #1008ab;
+    border-color: #1008ab;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0 10px;
+}
+
+.links-section {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: flex-end;
+  align-self: flex-start;
+  .link {
+    display: flex;
+    align-items: center;
+    img {
+      margin: 7px;
+    }
+  }
+}
+
+#page-number {
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 15px;
+  margin: 0 5px;
+  font-size: 1.5rem;
+  color: orangered;
+  transition: 0.3s;
+}

@@ -1,0 +1,15 @@
+#cursor {
+  position: absolute;
+  fill: "orangered";
+  pointer-events: none;
+  mix-blend-mode: difference;
+  width: 20px;
+  height: 20px;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  transition: transform 350ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+img:hover #cursor {
+  transform: scale(3);
+}

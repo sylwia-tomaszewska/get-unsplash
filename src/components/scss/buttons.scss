@@ -1,0 +1,12 @@
+.pagination-bttn {
+  background: orangered;
+  border-style: none;
+  padding: 11px 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+  &:hover {
+    background: #1008ab;
+  }
+}

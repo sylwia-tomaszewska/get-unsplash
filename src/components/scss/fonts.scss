@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "TomatoSoup";
+  src: url(../fonts/TomatoSoup-Regular.woff);
+}
+
+@font-face {
+  font-family: "OpticianSans";
+  src: url("../fonts/Optiker-K.woff2") format("woff2"),
+    url("../fonts/Optiker-K.otf") format("opentype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

@@ -22,6 +22,9 @@
   @media screen and (min-width: 930px) {
     grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
   }
+  @media screen and (min-width: 1920px) {
+    grid-template-columns: repeat(4, minmax(325px, 1fr));
+  }
 }
 .picture {
   position: relative;
@@ -33,7 +36,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("../img/unsplash.svg");
+    background: url("../img/unsplash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
     animation: unsplash 800ms infinite;
     animation-timing-function: steps(24);
     width: 100%;
